@@ -5,12 +5,18 @@ from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 
 def login(request):
     return render(request, "login.html")
+
+
+@login_required
+def home(request):
+    return render(request, "/")
 
 
 def azuread_login(request):
@@ -44,7 +50,7 @@ def azuread_callback(request):
                 login(request, user)
                 success_message = _(f"Successfully signed in as {user.username}.")
                 messages.success(request, success_message)
-                return render(request, "dashboard.html")
+                return render(request, "home.html")
             else:
                 return HttpResponse("Authentication failed.")
         except Exception as e:
