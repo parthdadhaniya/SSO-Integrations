@@ -19,11 +19,13 @@ def home(request):
     return render(request, "/")
 
 
+# Azure AD Login
 def azuread_login(request):
     auth_url = f"{settings.AZURE_AD_AUTH_URL}?client_id={settings.AZURE_AD_CLIENT_ID}&response_type=code&redirect_uri={settings.REDIRECT_URI}"
     return redirect(auth_url)
 
 
+# Azure AD Callback handler
 def azuread_callback(request):
     code = request.GET.get("code")
     token_data = {
@@ -55,3 +57,13 @@ def azuread_callback(request):
                 return HttpResponse("Authentication failed.")
         except Exception as e:
             return HttpResponse(f"{e}")
+
+
+# Facebook Callback Handler
+def facebook_authentication_complete(request):
+    if request.user.is_authenticated:
+        return redirect("home")
+    else:
+        user = request.user
+        login(request, user)
+        return redirect("home")

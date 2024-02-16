@@ -18,7 +18,8 @@
       style="width: 500px"
     >
       <h3 class="text-center">SSO Login</h3>
-      <div class="d-grid mt-3">
+      <!--Login With Azure-->
+      <div class="d-grid mt-2">
         <a href="{% url 'azuread_login' %}" class="btn btn-info mt-2">
           <img
             src="{% static 'images/windows.png' %}"
@@ -29,6 +30,7 @@
           Login With Azure AD
         </a>
       </div>
+      <!--Login With Google-->
       <div class="d-grid mt-2">
         <a
           href="{% url 'social:begin' 'google-oauth2' %}"
@@ -41,6 +43,33 @@
             height="30"
           />
           Login With Google
+        </a>
+      </div>
+      <!--Login With Facebook-->
+      <div class="d-grid mt-2">
+        <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-info mt-2">
+          <img
+            src="{% static 'images/facebook.png' %}"
+            alt="Google"
+            width="30"
+            height="30"
+          />
+          Login With Facebook
+        </a>
+      </div>
+      <!--Login With Instagram-->
+      <div class="d-grid mt-2">
+        <a
+          href="{% url 'social:begin' 'google-oauth2' %}"
+          class="btn btn-info mt-2"
+        >
+          <img
+            src="{% static 'images/instagram.png' %}"
+            alt="Google"
+            width="30"
+            height="30"
+          />
+          Login With Instagram
         </a>
       </div>
     </div>

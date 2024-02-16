@@ -136,16 +136,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTHENTICATION_BACKENDS = [
     "social_core.backends.google.GoogleOAuth2",
+    "social_core.backends.facebook.FacebookOAuth2",
     "django.contrib.auth.backends.ModelBackend",  # Keep the default authentication backend
 ]
 
 LOGIN_URL = "/login/"
 LOGIN_REDIRECT_URL = "/"
-
-# Google Account Configuration
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
 # Azure Active Directory Configuration
 
@@ -155,3 +151,13 @@ AZURE_AD_CLIENT_ID = os.environ.get("AZURE_AD_CLIENT_ID")
 AZURE_AD_CLIENT_SECRET = os.environ.get("AZURE_AD_CLIENT_SECRET")
 AZURE_AD_TENANT_ID = os.environ.get("AZURE_AD_TENANT_ID")
 REDIRECT_URI = os.environ.get("REDIRECT_URI")
+
+# Google Account Configuration
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+
+# Facebook Account Configuration
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
